@@ -1,111 +1,85 @@
-# A C++ CMake template on Gitpod
+# C++ CMake template  Gitpod
+1. 環境構築 | Web IDEである　[Gitpod](https://www.gitpod.io/docs/getting-started)　の導入
+
+2. Gitpod 導入
+   - 環境構築を簡略化
+   - Mac でもC, C++ 環境を整えられるかどうか
 
 This is a [C++ CMake](https://clang.llvm.org/) template configured for ephemeral development environments on [Gitpod](https://www.gitpod.io/).
 
-## Next Steps
+### 使用しないフレームワークを削除
 
-Click the button below to start a new development environment:
-
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/gitpod-io/template-cpp)
-
-## Get Started With Your Own Project
-
-### A new project
-
-Click the above "Open in Gitpod" button to start a new workspace. Once you're ready to push your first code changes, Gitpod will guide you to fork this project so you own it.
-
-### An existing project
-
-To get started with C++ on Gitpod, copy the contents of this folder to your own project. To learn more, please see the [Getting Started](https://www.gitpod.io/docs/getting-started) documentation.
-
-## Notes & caveats
-
-This template is based upon the excellent work by [@lefticus](https://github.com/lefticus/cpp_starter_project).
-
-### Remove frameworks you're not going to use
-
-If you know you're not going to use one or more of the optional gui/graphics
-frameworks (fltk, gtkmm, imgui, etc.), you can remove them with `git rm`:
+オプションのGUI /グラフィックフレームワーク（fltk、gtkmm、imguiなど）を1つ以上使用しないことがわかっている場合は、次のコマンドでそれらを削除できます `git rm`:
 
     $ git rm -r src/<unnecessary_framework>
 
 #### GUI libraries
 
-This project can be made to work with several optional GUI frameworks.
-
-If desired, you should install the following optional dependencies as directed by their documentation, linked here:
+このプロジェクトは、いくつかのオプションのGUIフレームワークで動作するように作成できます。
+必要に応じて、ここにリンクされているドキュメントの指示に従って、次のオプションの依存関係をインストールする必要がある
 
 - [FLTK](https://www.fltk.org/doc-1.4/index.html)
 - [GTKMM](https://www.gtkmm.org/en/documentation.html)
 - [QT](https://doc.qt.io/)
 
-The following dependencies can be downloaded automatically by CMake and Conan.
-All you need to do to install them is to turn on a CMake flag during
-configuration.
-If you run into difficulty using them, please refer to their documentation,
-linked here:
+以下の依存関係は、CMakeとConanによって自動的にダウンロードできます。それらをインストールするために必要なのは、構成中にCMakeフラグをオンにすることだけです。それらの使用に問題が発生した場合は、ここにリンクされているドキュメントを参照
 
 - [NANA](http://nanapro.org/en-us/documentation/)
 - [SDL](http://wiki.libsdl.org/FrontPage)
 - [IMGUI](https://github.com/ocornut/imgui/tree/master/docs):
-  This framework depends on SFML, and if you are using Linux, you may need
-  to install several of SFML's dependencies using your package manager. See
-  [the SFML build tutorial](https://www.sfml-dev.org/tutorials/2.5/compile-with-cmake.php)
-  for specifics.
+このフレームワークはSFMLに依存しており、Linuxを使用している場合は、パッケージマネージャーを使用してSFMLの依存関係のいくつかをインストールする必要がある場合があります。詳細について[utorial](https://www.sfml-dev.org/tutorials/2.5/compile-with-cmake.php) を参照
 
-## Build Instructions
+## Build 手順
 
-### Build directory
-Make a build directory:
+### Build directory を作成
 ```
 mkdir build
 ```
-### Specify the compiler using environment variables
+### 環境変数を使用してコンパイラを指定します
 
-By default (if you don't set environment variables `CC` and `CXX`), the system default compiler will be used.
+デフォルトでは（環境変数 `CC` とを設定しない場合 `CXX`）、システムのデフォルトコンパイラが使用される
 
-Conan and CMake use the environment variables CC and CXX to decide which compiler to use. So to avoid the conflict issues only specify the compilers using these variables.
+ConanとCMakeは、環境変数CCとCXXを使用して、使用するコンパイラーを決定します。したがって、競合の問題を回避するには、これらの変数を使用してコンパイラーのみを指定
 
-CMake will detect which compiler was used to build each of the Conan targets. If you build all of your Conan targets with one compiler, and then build your CMake targets with a different compiler, the project may fail to build.
+CMakeは、各Conanターゲットのビルドに使用されたコンパイラを検出します。1つのコンパイラですべてのConanターゲットをビルドしてから、別のコンパイラでCMakeターゲットをビルドすると、プロジェクトのビルドに失敗する場合がある
 
-The environment variables have been pre-defined in the `.gitpod.Dockerfile`.
+環境変数はで事前定義されている `.gitpod.Dockerfile`.
 
-### Configure your build
+### ビルドを構成
 
-To configure the project and write makefiles, you could use `cmake` with a bunch of command line options.
-The easier option is to run cmake interactively:
+プロジェクトを構成してmakefileを書き込むに `cmake` は、一連のコマンドラインオプションを使用できます。より簡単なオプションは、cmakeをインタラクティブに実行すること
 
-#### **Configure via cmake-gui**:
+#### **cmake-guiを介して構成**:
 
-1) Open cmake-gui from the project directory:
+1) プロジェクトディレクトリからcmake-guiを開く:
 ```
 cmake-gui .
 ```
-2) Set the build directory:
+2) ビルドディレクトリを設定:
 
 ![build_dir](https://user-images.githubusercontent.com/16418197/82524586-fa48e380-9af4-11ea-8514-4e18a063d8eb.jpg)
 
-3) Configure the generator:
+3) ジェネレーターを構成:
 
-In cmake-gui, from the upper menu select `Tools/Configure`.
+cmake-guiで、上部のメニューからを選択 `Tools/Configure`.
 
-**Warning**: if you have set `CC` and `CXX` always choose the `use default native compilers` option. This picks `CC` and `CXX`. Don't change the compiler at this stage!
+**Warning**: 警告：オプションを設定 `CC` して `CXX` 常に選択している `use default native compilers` 場合。これはピック `CC` と `CXX`. この段階ではコンパイラを変更しない!
 
 <details>
 <summary>Windows - MinGW Makefiles</summary>
 
-Choose MinGW Makefiles as the generator:
+ジェネレーターとしてMinGWMakefilesを選択します。:
 
 <img src="https://user-images.githubusercontent.com/16418197/82769479-616ade80-9dfa-11ea-899e-3a8c31d43032.png" alt="mingw">
 
 </details>
 
 <details>
-<summary>Windows - Visual Studio generator and compiler</summary>
+<summary>Cmakeオプションを選択して、以下を生成しますr</summary>
 
 You should have already set `C` and `CXX` to `cl.exe`.
 
-Choose "Visual Studio 16 2019" as the generator:
+ジェネレーターとして「VisualStudio162019」を選択します。:
 
 <img src="https://user-images.githubusercontent.com/16418197/82524696-32502680-9af5-11ea-9697-a42000e900a6.jpg" alt="default_vs">
 
@@ -113,90 +87,74 @@ Choose "Visual Studio 16 2019" as the generator:
 
 <details>
 
-<summary>Windows - Visual Studio generator and Clang Compiler</summary>
+<summary>Windows-VisualStudioジェネレーターとClangコンパイラー</summary>
 
-You should have already set `C` and `CXX` to `clang.exe` and `clang++.exe`.
+ `C` と `CXX` を設定しておく必要が `clang.exe` あり `clang++.exe`ます
 
-Choose "Visual Studio 16 2019" as the generator. To tell Visual studio to use `clang-cl.exe`:
-- If you use the LLVM that is shipped with Visual Studio: write `ClangCl` under "optional toolset to use".
+ジェネレーターとして「VisualStudio162019」を選択します。Visual Studioに使用するように指示するには `clang-cl.exe`:
+- Visual Studioに付属のLLVMを使用する場合 `ClangCl` 「使用するオプションのツールセット」の下に書き込みます。
 
 <img src="https://user-images.githubusercontent.com/16418197/82781142-ae60ac00-9e1e-11ea-8c77-222b005a8f7e.png" alt="visual_studio">
 
-- If you use an external LLVM: write [`LLVM_v142`](https://github.com/zufuliu/llvm-utils#llvm-for-visual-studio-2017-and-2019)
- under "optional toolset to use".
+- 外部LLVMを使用する場合 [`LLVM_v142`](https://github.com/zufuliu/llvm-utils#llvm-for-visual-studio-2017-and-2019)
+ 使用するオプションのツールセット」の下に書き込みます.
 
 <img src="https://user-images.githubusercontent.com/16418197/82769558-b3136900-9dfa-11ea-9f73-02ab8f9b0ca4.png" alt="visual_studio">
 
 </details>
 <br/>
 
-4) Choose the Cmake options and then generate:
+4) Cmakeオプションを選択して、以下を生成:
 
 ![generate](https://user-images.githubusercontent.com/16418197/82781591-c97feb80-9e1f-11ea-86c8-f2748b96f516.png)
 
-#### **Configure via ccmake**:
-with the Cmake Curses Dialog Command Line tool:
+#### **ccmakeを介して構成**:
+Cmake Cursesダイアログコマンドラインツールを使用すると、次のようになります:
 
     ccmake -S . -B ./build
 
-Once `ccmake` has finished setting up, press 'c' to configure the project,
-press 'g' to generate, and 'q' to quit.
+`ccmake` セットアップが完了したら、「c」を押してプロジェクトを構成し、「g」を押して生成し、「q」を押して終了します
 
 ### Build
-Once you have selected all the options you would like to use, you can build the
-project (all targets):
+使用するすべてのオプションを選択したら、プロジェクト（すべてのターゲット）をビルドできます:
 
     cmake --build ./build
 
-For Visual Studio, give the build configuration (Release, RelWithDeb, Debug, etc) like the following:
+Visual Studioの場合、次のようなビルド構成（Release、RelWithDeb、Debugなど）を指定します:
 
     cmake --build ./build -- /p:configuration=Release
 
-## Troubleshooting
+## トラブルシューティング
 
 ### Update Conan
-Many problems that users have can be resolved by updating Conan, so if you are
-having any trouble with this project, you should start by doing that.
+Conanを更新することで、ユーザーが抱える多くの問題を解決できるため、このプロジェクトで問題が発生した場合は、まずそれを実行する必要があります。
 
-To update conan:
+コナンを更新するには:
 
     $ pip install --user --upgrade conan
 
-You may need to use `pip3` instead of `pip` in this command, depending on your
-platform.
+プラットフォームによって `pip3` または `pip` iこのコマンドの代わりにを使用する必要がある
 
-### Clear Conan cache
-If you continue to have trouble with your Conan dependencies, you can try
-clearing your Conan cache:
+### Conan　キャッシュをクリアする
+Conanの依存関係で引き続き問題が発生する場合は、Conanキャッシュをクリアしてみてください
 
     $ conan remove -f '*'
 
-The next time you run `cmake` or `cmake --build`, your Conan dependencies will
-be rebuilt. If you aren't using your system's default compiler, don't forget to
-set the CC, CXX, CMAKE_C_COMPILER, and CMAKE_CXX_COMPILER variables, as
-described in the 'Build using an alternate compiler' section above.
+次回 `cmake` またはを実行する `cmake --build` と、Conanの依存関係が再構築されます。システムのデフォルトコンパイラを使用していない場合は、上記の「代替コンパイラを使用したビルド」セクションで説明されているように、CC、CXX、CMAKE_C_COMPILER、およびCMAKE_CXX_COMPILER変数を設定することを忘れないでください。
 
-### Identifying misconfiguration of Conan dependencies
+### コナンの依存関係の設定ミスの特定
 
-If you have a dependency 'A' that requires a specific version of another
-dependency 'B', and your project is trying to use the wrong version of
-dependency 'B', Conan will produce warnings about this configuration error
-when you run CMake. These warnings can easily get lost between a couple
-hundred or thousand lines of output, depending on the size of your project.
+別の依存関係「B」の特定のバージョンを必要とする依存関係「A」があり、プロジェクトが誤ったバージョンの依存関係「B」を使用しようとしている場合、CMakeを実行すると、Conanはこの構成エラーに関する警告を生成します。これらの警告は、プロジェクトのサイズに応じて、数百行または数千行の出力の間で簡単に失われる可能性があります。
 
-If your project has a Conan configuration error, you can use `conan info` to
-find it. `conan info` displays information about the dependency graph of your
-project, with colorized output in some terminals.
+プロジェクトにコナン構成エラーがある場合は、それを使用 `conan info` して見つける `conan info` プロジェクトの依存関係グラフに関する情報を、一部の端末で色付きの出力とともに表示:
 
     $ cd build
     $ conan info .
 
-In my terminal, the first couple lines of `conan info`'s output show all of the
-project's configuration warnings in a bright yellow font.
+`conan info` の出力の最初の数行に、プロジェクトのすべての構成警告が明るい黄色のフォントで表示されます。
 
-For example, the package `spdlog/1.5.0` depends on the package `fmt/6.1.2`.
-If you were to modify the file `cmake/Conan.cmake` so that it requires an
-earlier version of `fmt`, such as `fmt/6.0.0`, and then run:
+たとえば、パッケージ `spdlog/1.5.0` はパッケージに依存します `fmt/6.1.2`.
+などの `cmake/Conan.cmake` 以前のバージョンが必要になるようにファイルを変更して `fmt`, `fmt/6.0.0`,から、次のコマンドを実行する場合:
 
     $ conan remove -f '*'       # clear Conan cache
     $ rm -rf build              # clear previous CMake build
@@ -204,12 +162,11 @@ earlier version of `fmt`, such as `fmt/6.0.0`, and then run:
     $ cmake ..                  # rebuild Conan dependencies
     $ conan info .
 
-...the first line of output would be a warning that `spdlog` needs a more recent
-version of `fmt`.
+...出力の最初の行は `spdlog` より新しいバージョンのを必要とする警告になります `fmt`.
 
-### Testing
-See [Catch2 tutorial](https://github.com/catchorg/Catch2/blob/master/docs/tutorial.md)
+### テスト
+参照 : [Catch2 tutorial](https://github.com/catchorg/Catch2/blob/master/docs/tutorial.md)
 
 ### Fuzz testing
 
-See [libFuzzer Tutorial](https://github.com/google/fuzzing/blob/master/tutorial/libFuzzerTutorial.md)
+参照 : [libFuzzer Tutorial](https://github.com/google/fuzzing/blob/master/tutorial/libFuzzerTutorial.md)
